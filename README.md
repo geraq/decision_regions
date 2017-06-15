@@ -20,7 +20,7 @@ The expansion to the nth degree is performed by combining each feature with the 
 
     expand([x1,x2], 2) = 
     = x1 * expand([x1,x2], 1) ++ x2 * expand([x2], 1) =
-    = x1 * [x1,x2] ++ x2 * [x2] 
+    = x1 * [x1,x2] ++ x2 * [x2] =
     = [x1^2, x1x2, x2^2]
 
 where *++* means concatenation and _*_ means combination.
