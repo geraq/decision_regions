@@ -1,6 +1,6 @@
-## decision_regions
+
 # Introduction
-A little experiment to assest lineal and polynomial decision regions in logistic regression. The code is written in Julia 0.5 and plots are made with [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
+A little experiment to asses lineal and polynomial decision regions in logistic regression. The code is written in Julia 0.5 and plots are made with [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
 
 A 2D dataset of points is randomly generated and logistic regression is used to distinguish the blue point from the red ones.
 The blue points are determined to be those having both features *x1* and *x2* over 0.5, so the expected decision boundary should be a square with a vertex on (0.5, 0.5).
@@ -18,7 +18,10 @@ Given the feature set *\[x1, x2\]*, the linear model applied to it has the form 
 
 The expansion to the nth degree is performed by combining each feature with the expansion to the (n-1)th degree of itself and the following features. The combination consist of multiplying the feature by each column in the expansion. For example:
 
-expand(\[x1,x2\], 2) = x1 \* expand(\[x1,x2\], 1) ++ x2 \* expand(\[x2\], 1) = x1 \* \[x1,x2\] ++ x2 \* \[x2\] = \[x1^2, x1x2, x2^2\]
+    expand([x1,x2], 2) = 
+    = x1 * expand([x1,x2], 1) ++ x2 * expand([x2], 1) =
+    = x1 * [x1,x2] ++ x2 * [x2] 
+    = [x1^2, x1x2, x2^2]
 
 where *++* means concatenation and _*_ means combination.
 
