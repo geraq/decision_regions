@@ -20,7 +20,7 @@ The expansion to the nth degree is performed by combining each feature with the 
 
 expand(\[x1,x2\], 2) = x1 \* expand(\[x1,x2\], 1) ++ x2 \* expand(\[x2\], 1) = x1 \* \[x1,x2\] ++ x2 \* \[x2\] = \[x1^2, x1x2, x2^2\]
 
-where *++* means concatenation and *** means combination.
+where *++* means concatenation and _*_ means combination.
 
 # Model application and plotting
 Logistic regression is fitted by gradient descent, using both a fixed learning rate and maximum iteration count. No regularization is being applied. The cost function used is cross entropy. The same hyper-parameters are applied to the three models evaluated in this experiment: linear fit, quadratic fit, and cubic fit. The accuracy of each model is also reported.
