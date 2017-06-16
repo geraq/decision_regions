@@ -1,6 +1,6 @@
 
 # Introduction
-A little experiment to asses lineal and polynomial decision regions in logistic regression. The code is written in Julia 0.5 and plots are made with [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
+A little experiment to assess lineal and polynomial decision regions in logistic regression. The code is written in Julia 0.5 and plots are made with [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
 
 A 2D dataset of points is randomly generated and logistic regression is used to distinguish the blue point from the red ones.
 The blue points are determined to be those having both features *x1* and *x2* over 0.5, so the expected decision boundary should be a square with a vertex on (0.5, 0.5).
