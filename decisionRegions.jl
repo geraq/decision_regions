@@ -13,7 +13,7 @@ function plotData(X::Matrix{Float64}, y::Vector{Float64})
     plot(X[y .== 0, 1], X[y .== 0, 2], "r*")
 end
 
-function logisticRegression(X::Matrix{Float64}, y::Vector{Float64}, alpha::Float64, maxIter::Int)
+function logisticRegression(X::Matrix{Float64}, y::Vector{Float64}, alpha::Float64, maxIter::Int)::Matrix{Float64}
     (nExamples, nAttrs) = size(X) # M x N
     X2 = [ones(nExamples, 1) X] # M x (N+1)
     W = rand(nAttrs + 1, 1) # N+1 x 1       
@@ -26,7 +26,7 @@ function logisticRegression(X::Matrix{Float64}, y::Vector{Float64}, alpha::Float
     return W
 end
 
-function apply(W::Matrix{Float64}, X::Matrix{Float64})
+function apply(W::Matrix{Float64}, X::Matrix{Float64})::Matrix{Float64}
     (nExamples, nAttrs) = size(X) # M x N
     X2 = [ones(nExamples, 1) X] # M x (N+1)
     O = X2 * W # M x (N+1) * (N+1) x 1 --> M x 1
@@ -57,8 +57,8 @@ function plotRegions(f::Function)
     plot(c2[:, 1], c2[:, 2], "r.", ms=2)
 end
 
-#quadratic expansion, given [x1,x2], this produces [x1, x2, x1^2, x1*x2, x^2]#
-function expand(X::Matrix{Float64})
+#quadratic expansion, given [x1,x2], this produces [x1, x2, x1^2, x1*x2, x^2]
+function expand(X::Matrix{Float64})::Matrix{Float64}
     (nExamples, nAttrs) = size(X)
     X2 = zeros(nExamples, sum(1:nAttrs))    
     i = 1
@@ -76,7 +76,7 @@ Each column distributes over the expansion of itself and the remaining columns, 
 i.e., e([x1, x2], 2) = [x1*e([x1, x2], 1) x2*e([x2], 1)] =
 [x1 * [x1, x2] x2*x2] = [x1^2 x1*x2 x2^2]
 =#
-function expand(X::Matrix{Float64}, n::Int)
+function expand(X::Matrix{Float64}, n::Int)::Matrix{Float64}
     if (n <= 1)
         return X
     else        
@@ -93,7 +93,7 @@ function expand(X::Matrix{Float64}, n::Int)
 end
 
 #concatenates the results of the expansions from 1 up to N.#
-function expandSet(X::Matrix{Float64}, N::Int)
+function expandSet(X::Matrix{Float64}, N::Int)::Matrix{Float64}
     (nExamples, nAttrs) = size(X)
     sets = map(n -> expand(X, n), 1:N)
     return foldl((R, D) -> [R D], Matrix{Float64}(nExamples, 0), sets)
